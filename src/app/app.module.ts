@@ -9,6 +9,8 @@ import { AboutComponent } from './about/about.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { FeaturesComponent } from './features/features.component';
 import { LowerpartComponent } from './lowerpart/lowerpart.component';
+import { FormsModule } from '@angular/forms';
+
 import { FooterComponent } from './footer/footer.component';
 import { FaqComponent } from './faq/faq.component';
 
@@ -26,7 +28,8 @@ import { FaqComponent } from './faq/faq.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

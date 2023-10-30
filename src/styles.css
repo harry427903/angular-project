@@ -11,7 +11,12 @@
 
 * {
     font-family: "Inter", sans-serif;
+
 }  
+
+:root {
+    overflow-x: hidden;
+}
 
 
 .card-shadow {

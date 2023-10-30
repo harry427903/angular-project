@@ -1,25 +1,192 @@
-<p>calculator works!</p>
-<!-- component -->
-<main class="grid min-h-screen w-full place-items-center">
-    <div class="grid w-[40rem] grid-cols-4 gap-2 rounded-xl bg-gray-200 p-2">
-        <div>
-            <input type="radio" name="option" id="1" value="1" class="peer hidden" checked />
-            <label for="1" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">1</label>
-        </div>
+<main class="grid min-h-screen w-full justify-center">
 
-        <div>
-            <input type="radio" name="option" id="2" value="2" class="peer hidden" />
-            <label for="2" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">2</label>
-        </div>
-
-        <div>
-            <input type="radio" name="option" id="3" value="3" class="peer hidden" />
-            <label for="3" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">3</label>
-        </div>
-
-        <div>
-            <input type="radio" name="option" id="4" value="3" class="peer hidden" />
-            <label for="4" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">4</label>
-        </div>
+  <div
+    class="grid w-[40rem] grid-cols-3 gap-2 h-[3.5rem] rounded-xl bg-gray-200 p-2"
+  >
+    <div *ngFor="let option of calculatorOptions" class="text-center">
+      <input
+        type="radio"
+        name="option"
+        [id]="option.value"
+        [(ngModel)]="selectedCalculator"
+        [value]="option.value"
+        class="peer hidden"
+      />
+      <label
+        [for]="option.value"
+        class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+      >
+        {{ option.label }}
+      </label>
     </div>
+  </div>
+
+  <div
+    class="calculator-panel mt-2"
+    *ngIf="selectedCalculator === 'simple-interest'"
+  >
+    <!-- Simple Interest Calculator -->
+
+    <div class="container">
+      <div class="calculator-panel">
+        <div *ngIf="selectedCalculator === 'simple-interest'" class="mt-4">
+          <h3 class="text-3xl font-semibold text-center mb-4">
+            Simple Interest Calculator
+          </h3>
+          <div class="mb-4">
+            <label for="principal" class="text-lg font-medium block mb-2"
+              >Principal Amount</label
+            >
+            <input
+              type="number"
+              id="principal"
+              [(ngModel)]="principal"
+              class="input-field"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="rate" class="text-lg font-medium block mb-2"
+              >Rate of Interest (%)</label
+            >
+            <input
+              type="number"
+              id="rate"
+              [(ngModel)]="rate"
+              class="input-field"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="time" class="text-lg font-medium block mb-2"
+              >Time (years)</label
+            >
+            <input
+              type="number"
+              id="time"
+              [(ngModel)]="time"
+              class="input-field"
+            />
+          </div>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
+            (click)="calculateSimpleInterest()"
+          >
+            Calculate
+          </button>
+          <div class="mt-4 text-2xl font-semibold">
+            Simple Interest: {{ simpleInterestResult }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-panel mt-4" *ngIf="selectedCalculator === 'loan'">
+    <!-- Loan Calculator -->
+    <h3 class="text-center">Loan Calculator</h3>
+
+    <div class="flex justify-center items-center h-screen">
+      <div class="bg-white rounded-lg shadow-lg p-10 w-96">
+        <h3 class="text-center text-2xl font-bold">Loan Calculator</h3>
+
+        <div class="flex flex-col gap-4 mt-4">
+          <div class="flex flex-row gap-4">
+            <label for="loanAmount" class="font-medium">Loan Amount</label>
+            <input
+              type="number"
+              id="loanAmount"
+              [(ngModel)]="loanAmount"
+              class="border border-gray-300 rounded-md px-2 py-1"
+            />
+          </div>
+
+          <div class="flex flex-row gap-4">
+            <label for="loanInterestRate" class="font-medium"
+              >Interest Rate (%)</label
+            >
+            <input
+              type="number"
+              id="loanInterestRate"
+              [(ngModel)]="loanInterestRate"
+              class="border border-gray-300 rounded-md px-2 py-1"
+            />
+          </div>
+
+          <div class="flex flex-row gap-4">
+            <label for="loanTerm" class="font-medium">Loan Term (years)</label>
+            <input
+              type="number"
+              id="loanTerm"
+              [(ngModel)]="loanTerm"
+              class="border border-gray-300 rounded-md px-2 py-1"
+            />
+          </div>
+        </div>
+
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4"
+          (click)="calculateLoan()"
+        >
+          Calculate
+        </button>
+
+        <h4 class="text-center mt-4 text-lg font-medium">
+          Total Loan Amount: {{ loanAmountResult }}
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-panel mt-4" *ngIf="selectedCalculator === 'savings'">
+    <!-- Savings Calculator -->
+    <h3 class="text-center">Savings Calculator</h3>
+
+    <div class="flex justify-center items-center h-screen">
+      <div class="bg-white rounded-lg shadow-lg p-10 w-96">
+        <h3 class="text-center text-2xl font-bold">Savings Calculator</h3>
+
+        <div class="flex flex-col gap-4 mt-4">
+          <div class="flex flex-row gap-4">
+            <label for="salary" class="font-medium">Salary</label>
+            <input
+              type="number"
+              id="salary"
+              [(ngModel)]="salary"
+              class="border border-gray-300 rounded-md px-2 py-1"
+            />
+          </div>
+
+          <div class="flex flex-row gap-4">
+            <label for="expenditure" class="font-medium">Expenditure</label>
+            <input
+              type="number"
+              id="expenditure"
+              [(ngModel)]="expenditure"
+              class="border border-gray-300 rounded-md px-2 py-1"
+            />
+          </div>
+
+          <div class="flex flex-row gap-4">
+            <label for="savings" class="font-medium">Savings</label>
+            <input
+              type="number"
+              id="savings"
+              [(ngModel)]="savings"
+              class="border border-gray-300 rounded-md px-2 py-1"
+            />
+          </div>
+        </div>
+
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4"
+          (click)="calculateSavings()"
+        >
+          Calculate
+        </button>
+
+        <h4 class="text-center mt-4 text-lg font-medium">
+          Yearly Savings: {{ yearlySavingsResult }}
+        </h4>
+      </div>
+    </div>
+  </div>
 </main>
