@@ -1,4 +1,8 @@
-<main class="grid min-h-screen w-full justify-center">
+<main class=" w-full h-screen">
+
+  <div class="mt-28 flex items-center justify-center flex-col">
+
+
 
   <div
     class="grid w-[40rem] grid-cols-3 gap-2 h-[3.5rem] rounded-xl bg-gray-200 p-2"
@@ -21,72 +25,66 @@
     </div>
   </div>
 
-  <div
-    class="calculator-panel mt-2"
-    *ngIf="selectedCalculator === 'simple-interest'"
-  >
-    <!-- Simple Interest Calculator -->
 
-    <div class="container">
-      <div class="calculator-panel">
-        <div *ngIf="selectedCalculator === 'simple-interest'" class="mt-4">
-          <h3 class="text-3xl font-semibold text-center mb-4">
-            Simple Interest Calculator
-          </h3>
-          <div class="mb-4">
-            <label for="principal" class="text-lg font-medium block mb-2"
-              >Principal Amount</label
-            >
-            <input
-              type="number"
-              id="principal"
-              [(ngModel)]="principal"
-              class="input-field"
-            />
+
+
+
+
+
+
+  <div
+    class=" w-1/2  py-8 mt-8 flex  justify-center" 
+  >
+    <div class="container max-w-md h-full flex flex-col justify-center items-center" *ngIf="selectedCalculator === 'simple-interest'">
+
+
+      <div class="bg-white rounded-lg shadow-lg  shadow-slate-600 shadow-2xl  p-10">
+        <div class="flex flex-col gap-4 mt-4">
+      
+          <div class="mt-4">
+       
+              <div class="mb-4">
+                <label for="principal" class="font-medium block mb-2 text-md">Principal Amount</label>
+                <input type="number" id="principal" [(ngModel)]="principal" class="form-input">
+              </div>
+          
+              <div class="mb-4">
+                <label for="rate" class="font-medium block mb-2 text-md">Rate of Interest (%)</label>
+                <input type="number" id="rate" [(ngModel)]="rate" class="form-input">
+              </div>
+          
+              <div class="mb-4">
+                <label for="time" class="font-medium block mb-2 text-md">Time (years)</label>
+                <input type="number" id="time" [(ngModel)]="time" class="form-input">
+              </div>
+          
+              <button class="bg-blue-500 w-full hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md" (click)="calculateSimpleInterest()">
+                Calculate
+              </button>
+          
+              <div class="mt-4 text-xl font-semibold">
+                Answer: <span class="border-green-300 border-solid">{{ simpleInterestResult }}</span>
+              </div>
+            
           </div>
-          <div class="mb-4">
-            <label for="rate" class="text-lg font-medium block mb-2"
-              >Rate of Interest (%)</label
-            >
-            <input
-              type="number"
-              id="rate"
-              [(ngModel)]="rate"
-              class="input-field"
-            />
-          </div>
-          <div class="mb-4">
-            <label for="time" class="text-lg font-medium block mb-2"
-              >Time (years)</label
-            >
-            <input
-              type="number"
-              id="time"
-              [(ngModel)]="time"
-              class="input-field"
-            />
-          </div>
-          <button
-            class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
-            (click)="calculateSimpleInterest()"
-          >
-            Calculate
-          </button>
-          <div class="mt-4 text-2xl font-semibold">
-            Simple Interest: {{ simpleInterestResult }}
-          </div>
+          
+       
+
         </div>
+      
       </div>
     </div>
-  </div>
+  
 
-  <div class="calculator-panel mt-4" *ngIf="selectedCalculator === 'loan'">
-    <!-- Loan Calculator -->
-    <h3 class="text-center">Loan Calculator</h3>
 
-    <div class="flex justify-center items-center h-screen">
-      <div class="bg-white rounded-lg shadow-lg p-10 w-96">
-        <h3 class="text-center text-2xl font-bold">Loan Calculator</h3>
+
+
+
+  <div class="container  max-w-md h-full flex flex-col justify-center items-center" *ngIf="selectedCalculator === 'loan'">
+
+
+    
+      <!-- <div class="bg-white rounded-lg shadow-lg p-10 ">
 
         <div class="flex flex-col gap-4 mt-4">
           <div class="flex flex-row gap-4">
@@ -95,7 +93,7 @@
               type="number"
               id="loanAmount"
               [(ngModel)]="loanAmount"
-              class="border border-gray-300 rounded-md px-2 py-1"
+              class="form-input"
             />
           </div>
 
@@ -107,7 +105,7 @@
               type="number"
               id="loanInterestRate"
               [(ngModel)]="loanInterestRate"
-              class="border border-gray-300 rounded-md px-2 py-1"
+              class="form-input"
             />
           </div>
 
@@ -117,7 +115,7 @@
               type="number"
               id="loanTerm"
               [(ngModel)]="loanTerm"
-              class="border border-gray-300 rounded-md px-2 py-1"
+              class="form-input"
             />
           </div>
         </div>
@@ -132,61 +130,81 @@
         <h4 class="text-center mt-4 text-lg font-medium">
           Total Loan Amount: {{ loanAmountResult }}
         </h4>
-      </div>
-    </div>
-  </div>
-
-  <div class="calculator-panel mt-4" *ngIf="selectedCalculator === 'savings'">
-    <!-- Savings Calculator -->
-    <h3 class="text-center">Savings Calculator</h3>
-
-    <div class="flex justify-center items-center h-screen">
-      <div class="bg-white rounded-lg shadow-lg p-10 w-96">
-        <h3 class="text-center text-2xl font-bold">Savings Calculator</h3>
-
+      </div> -->
+      <div class="bg-white rounded-lg shadow-slate-600 shadow-2xl p-10">
         <div class="flex flex-col gap-4 mt-4">
-          <div class="flex flex-row gap-4">
-            <label for="salary" class="font-medium">Salary</label>
-            <input
-              type="number"
-              id="salary"
-              [(ngModel)]="salary"
-              class="border border-gray-300 rounded-md px-2 py-1"
-            />
+          <div class="mb-4">
+            <label for="loanAmount" class="font-medium block mb-2 text-md">Loan Amount</label>
+            <input type="number" id="loanAmount" [(ngModel)]="loanAmount" class="form-input">
           </div>
-
-          <div class="flex flex-row gap-4">
-            <label for="expenditure" class="font-medium">Expenditure</label>
-            <input
-              type="number"
-              id="expenditure"
-              [(ngModel)]="expenditure"
-              class="border border-gray-300 rounded-md px-2 py-1"
-            />
+      
+          <div class="mb-4">
+            <label for="loanInterestRate" class="font-medium block mb-2 text-md">Interest Rate (%)</label>
+            <input type="number" id="loanInterestRate" [(ngModel)]="loanInterestRate" class="form-input">
           </div>
-
-          <div class="flex flex-row gap-4">
-            <label for="savings" class="font-medium">Savings</label>
-            <input
-              type="number"
-              id="savings"
-              [(ngModel)]="savings"
-              class="border border-gray-300 rounded-md px-2 py-1"
-            />
+      
+          <div class="mb-4">
+            <label for="loanTerm" class="font-medium block mb-2 text-md">Loan Term (years)</label>
+            <input type="number" id="loanTerm" [(ngModel)]="loanTerm" class="form-input">
           </div>
         </div>
-
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4"
-          (click)="calculateSavings()"
-        >
+      
+        <button class="bg-blue-500 w-full hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md" (click)="calculateLoan()">
           Calculate
         </button>
-
+      
         <h4 class="text-center mt-4 text-lg font-medium">
-          Yearly Savings: {{ yearlySavingsResult }}
+          Total Loan Amount: {{ loanAmountResult }}
         </h4>
       </div>
-    </div>
+      
   </div>
+
+
+
+
+
+
+
+
+  <div class="container  max-w-md h-full flex flex-col justify-center items-center" *ngIf="selectedCalculator === 'savings'">
+
+    <div class="bg-white rounded-lg shadow-lg p-10  shadow-slate-600 shadow-2xl ">
+      <div class="flex flex-col gap-4 mt-4">
+
+        <div class="mb-4">
+          <label for="salary" class="font-medium block mb-2 text-md">Salary</label>
+          <input type="number" id="salary" [(ngModel)]="salary" class="form-input">
+        </div>
+    
+        <div class="mb-4">
+          <label for="expenditure" class="font-medium block mb-2 text-md">Expenditure</label>
+          <input type="number" id="expenditure" [(ngModel)]="expenditure" class="form-input">
+        </div>
+    
+        <div class="mb-4">
+          <label for="savings" class="font-medium block mb-2 text-md">Savings</label>
+          <input type="number" id="savings" [(ngModel)]="savings" class="form-input">
+        </div>
+      </div>
+    
+      <button class="bg-blue-500 w-full hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md" (click)="calculateSavings()">
+        Calculate
+      </button>
+    
+      <h4 class="text-center mt-4 text-lg font-medium">
+        Yearly Savings: {{ yearlySavingsResult }}
+      </h4>
+    </div>
+    
+    
+  
+  </div>
+
+
+
+
+</div>
+</div>
+
 </main>
