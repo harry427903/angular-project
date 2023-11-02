@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 
 import { FooterComponent } from './footer/footer.component';
 import { FaqComponent } from './faq/faq.component';
+import { CardsComponent } from './cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FaqComponent } from './faq/faq.component';
     FeaturesComponent,
     LowerpartComponent,
     FooterComponent,
-    FaqComponent
+    FaqComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,

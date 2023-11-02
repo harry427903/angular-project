@@ -29,7 +29,35 @@
 }
 
 .form-input {
-    @apply block w-full px-2 text-lg  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ;
+    @apply block w-full h-10 px-2 text-lg  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ;
+}
+
+.main-gradient { 
+    /* @apply bg-gradient-to-r from-emerald-400 to-cyan-400 */
+    /* @apply bg-gradient-to-r from-cyan-500 to-blue-500 */
+    /* @apply bg-teal-400 bg-gradient-to-r from-teal-400 to-blue-800 */
+    @apply bg-green-300 bg-gradient-to-r from-green-300 to-teal-400
+
+}
+
+.input-div {
+    @apply m-2 
+}
+
+.second-gradient {
+    @apply bg-teal-300 bg-gradient-to-r from-teal-300 to-indigo-500
+}
+
+.image-filter {
+    @apply filter brightness-100 contrast-100 saturate-100 sepia-0 invert-0 drop-shadow-[0px] bg-pink-500
+
 }
 
 
+
+/* Calculator */
+
+
+.calculator-button {
+    @apply bg-secondary w-1/2 mt-4 hover:bg-tertiary text-white font-medium py-2 px-4 rounded-md
+}

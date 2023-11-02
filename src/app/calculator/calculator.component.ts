@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CalculatorComponent {
 
-  selectedCalculator: string = 'loan';
+  selectedCalculator: string = 'simple-interest';
   calculatorOptions = [
     { value: 'simple-interest', label: 'Simple Interest' },
     { value: 'loan', label: 'Loan Calculator' },
@@ -15,7 +15,7 @@ export class CalculatorComponent {
   ];
 
  // selectedCalculator: string = 'simple-interest'; // Default selection
-  principal: number = 0;
+  principal: number = 0 ;
   rate: number = 0;
   time: number = 0;
   simpleInterestResult: number | null = null;

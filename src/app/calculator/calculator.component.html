@@ -5,7 +5,7 @@
 
 
   <div
-    class="grid w-[40rem] grid-cols-3 gap-2 h-[3.5rem] rounded-xl bg-gray-200 p-2"
+    class="grid w-1/2 md:w-[40rem] mx-8 grid-cols-1 md:grid-cols-3 gap-2 md:h-[3.5rem] rounded-xl bg-gray-200 shadow-xl p-2"
   >
     <div *ngFor="let option of calculatorOptions" class="text-center">
       <input
@@ -18,7 +18,7 @@
       />
       <label
         [for]="option.value"
-        class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+        class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-tertiary peer-checked:font-bold peer-checked:text-white"
       >
         {{ option.label }}
       </label>
@@ -33,40 +33,47 @@
 
 
   <div
-    class=" w-1/2  py-8 mt-8 flex  justify-center" 
+    class=" w-2/3  py-8 mt-8 flex justify-center" 
   >
-    <div class="container max-w-md h-full flex flex-col justify-center items-center" *ngIf="selectedCalculator === 'simple-interest'">
+    <div class="container max-w-3xl h-full flex flex-col justify-center items-center" *ngIf="selectedCalculator === 'simple-interest'">
 
 
-      <div class="bg-white rounded-lg shadow-lg  shadow-slate-600 shadow-2xl  p-10">
-        <div class="flex flex-col gap-4 mt-4">
+      <div class="rounded-lg main-gradient shadow-slate-600 shadow-2xl  p-10">
+        <div class="flex flex-col gap-4 mt-4 items-center">
       
-          <div class="mt-4">
-       
-              <div class="mb-4">
-                <label for="principal" class="font-medium block mb-2 text-md">Principal Amount</label>
-                <input type="number" id="principal" [(ngModel)]="principal" class="form-input">
+          <div class="mt-3 flex flex-col lg:flex-row justify-center ">
+
+              <div class="mb-4 input-div ">
+                <label for="principal" class="font-medium block mb-2 pl-2 text-md">Principal Amount</label>
+                <input type="number" id="principal"[(ngModel)]="principal" class="form-input">
               </div>
           
-              <div class="mb-4">
+              <div class="mb-4 input-div">
                 <label for="rate" class="font-medium block mb-2 text-md">Rate of Interest (%)</label>
                 <input type="number" id="rate" [(ngModel)]="rate" class="form-input">
               </div>
+           
+
+            
           
-              <div class="mb-4">
+              <div class="mb-4 input-div">
                 <label for="time" class="font-medium block mb-2 text-md">Time (years)</label>
                 <input type="number" id="time" [(ngModel)]="time" class="form-input">
               </div>
+
+            </div>
           
-              <button class="bg-blue-500 w-full hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md" (click)="calculateSimpleInterest()">
+              <button class="calculator-button" (click)="calculateSimpleInterest()">
                 Calculate
               </button>
+
+         
           
               <div class="mt-4 text-xl font-semibold">
                 Answer: <span class="border-green-300 border-solid">{{ simpleInterestResult }}</span>
               </div>
             
-          </div>
+          
           
        
 
@@ -80,76 +87,29 @@
 
 
 
-  <div class="container  max-w-md h-full flex flex-col justify-center items-center" *ngIf="selectedCalculator === 'loan'">
+  <div class="container  max-w-3xl h-full flex flex-col justify-center items-center" *ngIf="selectedCalculator === 'loan'">
 
 
-    
-      <!-- <div class="bg-white rounded-lg shadow-lg p-10 ">
+      <div class="bg-white flex flex-col items-center rounded-lg shadow-slate-600 shadow-2xl p-10 main-gradient">
+        <div  class="mt-4 flex flex-col lg:flex-row justify-center ">
 
-        <div class="flex flex-col gap-4 mt-4">
-          <div class="flex flex-row gap-4">
-            <label for="loanAmount" class="font-medium">Loan Amount</label>
-            <input
-              type="number"
-              id="loanAmount"
-              [(ngModel)]="loanAmount"
-              class="form-input"
-            />
-          </div>
-
-          <div class="flex flex-row gap-4">
-            <label for="loanInterestRate" class="font-medium"
-              >Interest Rate (%)</label
-            >
-            <input
-              type="number"
-              id="loanInterestRate"
-              [(ngModel)]="loanInterestRate"
-              class="form-input"
-            />
-          </div>
-
-          <div class="flex flex-row gap-4">
-            <label for="loanTerm" class="font-medium">Loan Term (years)</label>
-            <input
-              type="number"
-              id="loanTerm"
-              [(ngModel)]="loanTerm"
-              class="form-input"
-            />
-          </div>
-        </div>
-
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4"
-          (click)="calculateLoan()"
-        >
-          Calculate
-        </button>
-
-        <h4 class="text-center mt-4 text-lg font-medium">
-          Total Loan Amount: {{ loanAmountResult }}
-        </h4>
-      </div> -->
-      <div class="bg-white rounded-lg shadow-slate-600 shadow-2xl p-10">
-        <div class="flex flex-col gap-4 mt-4">
-          <div class="mb-4">
+          <div class="mb-4 input-div">
             <label for="loanAmount" class="font-medium block mb-2 text-md">Loan Amount</label>
             <input type="number" id="loanAmount" [(ngModel)]="loanAmount" class="form-input">
           </div>
       
-          <div class="mb-4">
+          <div class="mb-4 input-div">
             <label for="loanInterestRate" class="font-medium block mb-2 text-md">Interest Rate (%)</label>
             <input type="number" id="loanInterestRate" [(ngModel)]="loanInterestRate" class="form-input">
           </div>
       
-          <div class="mb-4">
+          <div class="mb-4 input-div">
             <label for="loanTerm" class="font-medium block mb-2 text-md">Loan Term (years)</label>
             <input type="number" id="loanTerm" [(ngModel)]="loanTerm" class="form-input">
           </div>
         </div>
       
-        <button class="bg-blue-500 w-full hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md" (click)="calculateLoan()">
+        <button class="calculator-button" (click)="calculateLoan()">
           Calculate
         </button>
       
@@ -167,28 +127,29 @@
 
 
 
-  <div class="container  max-w-md h-full flex flex-col justify-center items-center" *ngIf="selectedCalculator === 'savings'">
+  <div class="container  max-w-3xl h-full flex flex-col justify-center items-center" *ngIf="selectedCalculator === 'savings'">
 
-    <div class="bg-white rounded-lg shadow-lg p-10  shadow-slate-600 shadow-2xl ">
-      <div class="flex flex-col gap-4 mt-4">
+    <div class="bg-white rounded-lg flex flex-col items-center p-10  shadow-slate-600 shadow-2xl main-gradient">
+      <div class=" mt-4 flex flex-col lg:flex-row justify-center ">
 
-        <div class="mb-4">
+        <div class="mb-4 input-div">
           <label for="salary" class="font-medium block mb-2 text-md">Salary</label>
           <input type="number" id="salary" [(ngModel)]="salary" class="form-input">
         </div>
     
-        <div class="mb-4">
+        <div class="mb-4 input-div">
           <label for="expenditure" class="font-medium block mb-2 text-md">Expenditure</label>
           <input type="number" id="expenditure" [(ngModel)]="expenditure" class="form-input">
         </div>
     
-        <div class="mb-4">
+        <div class="mb-4 input-div">
           <label for="savings" class="font-medium block mb-2 text-md">Savings</label>
           <input type="number" id="savings" [(ngModel)]="savings" class="form-input">
         </div>
+
       </div>
     
-      <button class="bg-blue-500 w-full hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md" (click)="calculateSavings()">
+      <button class="calculator-button" (click)="calculateSavings()">
         Calculate
       </button>
     
