@@ -9,13 +9,13 @@ import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { FeaturesComponent } from './features/features.component';
-import { LowerpartComponent } from './lowerpart/lowerpart.component';
 import { FormsModule } from '@angular/forms';
 
 import { FooterComponent } from './footer/footer.component';
 import { FaqComponent } from './faq/faq.component';
 import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +25,11 @@ import { LoginComponent } from './login/login.component';
     AboutComponent,
     CalculatorComponent,
     FeaturesComponent,
-    LowerpartComponent,
     FooterComponent,
     FaqComponent,
     CardsComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

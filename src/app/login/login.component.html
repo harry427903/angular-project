@@ -1,6 +1,6 @@
 <!-- login.component.html -->
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
-    <div class="bg-white p-8 rounded shadow-lg w-96">
+    <div class="bg-white p-8 rounded shadow-lg w-96 main-gradient">
       <h2 class="text-2xl font-semibold text-center mb-4">Login</h2>
       <form>
         <div class="mb-4">
@@ -8,8 +8,10 @@
           <input
             type="email"
             id="email"
+            name="email" 
             class="w-full p-2 border rounded focus:outline-none focus:border-blue-400"
             placeholder="Your email"
+            [(ngModel)]="user.email"
           />
         </div>
         <div class="mb-4">
@@ -17,16 +19,22 @@
           <input
             type="password"
             id="password"
+            name="password"
             class="w-full p-2 border rounded focus:outline-none focus:border-blue-400"
             placeholder="Your password"
+            [(ngModel)]="user.password"
           />
         </div>
         <button
-          type="submit"
-          class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          type="button"
+          class="w-full bg-secondary opacity-80 text-white p-2 rounded hover:bg-header"
+          (click)="onLogin()"
         >
           Login
         </button>
+        <div class="m-2 flex items-center justify-center">
+            <p class="text-gray-600 italic">don't have account <a routerLink="/signup" class="text-tertiary font-bold ">Sign up Here</a></p>
+        </div>
       </form>
     </div>
   </div>

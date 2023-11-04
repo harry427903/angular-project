@@ -15,7 +15,9 @@ module.exports = {
 
           secondary : "#6F42CE",
           
-          tertiary : "#F44E77"
+          tertiary : "#F44E77",
+
+          header : "#b599f0"
         }
     },
   },
