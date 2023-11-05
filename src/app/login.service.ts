@@ -12,7 +12,7 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    console.log(email, password);
+    console.log(email, password, this.apiUrl);
 
     const credentials = { email, password };
     return this.http.post(this.apiUrl, credentials);
