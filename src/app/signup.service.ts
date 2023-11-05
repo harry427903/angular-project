@@ -5,7 +5,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class SignupService {
-  private apiUrl = 'http://localhost:3001/auth/signup'; // Replace with your server's URL
+  // private apiUrl = 'http://localhost:3001/auth/signup'; 
+    private apiUrl = 'https://fundfusion-backend-api.vercel.app/auth/signup'
+
 
   constructor(private http: HttpClient) {}
 

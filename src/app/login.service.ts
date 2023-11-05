@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginService {
 
-  private apiUrl = 'http://localhost:3001/auth/login'; // Replace with your API URL
+  // private apiUrl = 'http://localhost:3001/auth/login';
+  private apiUrl = 'https://fundfusion-backend-api.vercel.app/auth/login'
 
   constructor(private http: HttpClient) {}
 
