@@ -6,6 +6,9 @@ console.log("reques called")
 router.post('/login', authController.login);
 router.post('/signup', authController.signup);
 
-module.exports = router;
+module.exports = router; 
+
+
+
 
 
