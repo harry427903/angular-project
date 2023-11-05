@@ -13,7 +13,9 @@ node_modules
 ./src/api/local.env
 ./src/api/local.env/
 *.env
-local.envv
+local.env
+
+
 # Node
 /node_modules
 npm-debug.log
