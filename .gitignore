@@ -10,9 +10,10 @@ node_modules
 **/node_modules
 **/*/node_modules
 
-src/api/local.env
+./src/api/local.env
+./src/api/local.env/
 *.env
-local.env
+local.envv
 # Node
 /node_modules
 npm-debug.log
