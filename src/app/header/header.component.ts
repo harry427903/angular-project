@@ -7,8 +7,20 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+
   isMenuOpen = false;
 
+  isLoggedIn = false;
+  ngOnInit() {
+    console.log("inside ngonit")
+    this.isLoggedIn = localStorage.getItem("loggedin") === "true";
+  }
+  logout() {
+    localStorage.setItem("loggedin","false");
+    this.isLoggedIn = false;
+    window.location.reload();
+
+  }
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }

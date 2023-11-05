@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { LoginService } from './../login.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ChangeDetectorRef } from '@angular/core';
+import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -9,10 +13,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+
+
   user = { email: '', password: '' }; // Define the user object
   
-  
-  constructor(private loginService: LoginService, private router: Router) {}
+  isLogin = false;
+  constructor(private loginService: LoginService, private router: Router , private toastr: ToastrService, private cdr: ChangeDetectorRef, private location: Location) {}
   
   
   onLogin() {
@@ -23,7 +29,13 @@ export class LoginComponent {
       (response) => {
         // Handle a successful login response
         console.log('Login successful:', response);
+        this.isLogin=true;
+        localStorage.setItem("loggedin",this.isLogin.toString());
+
+
         // Redirect to another page or perform other actions
+        this.toastr.success("Login successful");
+
         this.router.navigate(['/home']);
       },
       (error) => {

@@ -10,10 +10,12 @@ import { AboutComponent } from './about/about.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { FeaturesComponent } from './features/features.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 import { FooterComponent } from './footer/footer.component';
 import { FaqComponent } from './faq/faq.component';
-import { CardsComponent } from './cards/cards.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -27,7 +29,6 @@ import { SignupComponent } from './signup/signup.component';
     FeaturesComponent,
     FooterComponent,
     FaqComponent,
-    CardsComponent,
     LoginComponent,
     SignupComponent
   ],
@@ -35,7 +36,9 @@ import { SignupComponent } from './signup/signup.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule,  
+     BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

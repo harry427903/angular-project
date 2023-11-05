@@ -17,14 +17,17 @@
 
     <!-- Desktop menu (visible when screen size is LG or larger) -->
     <div class="hidden lg:flex lg:gap-x-12">
-      <a routerLink="/home" class="text-md font-semibold leading-6 text-white">Home</a>
-      <a routerLink="/calculator" class="text-md font-semibold leading-6 text-white">Calculator</a>
-      <a routerLink="/about" class="text-md font-semibold leading-6 text-white">Contact</a>
-      <a routerLink="/card" class="text-md font-semibold leading-6 text-white">Card</a>
+      <a routerLink="/home" class="text-md font-semibold leading-6 text-gray-800">Home</a>
+      <a routerLink="/calculator" class="text-md font-semibold leading-6 text-gray-800">Calculator</a>
+      <a routerLink="/about" class="text-md font-semibold leading-6 text-gray-800">Contact</a>
     </div>
 
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end" *ngIf="!isLoggedIn">
       <a routerLink="/signup" class="text-sm font-semibold leading-6 text-gray-900">Sign Up<span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end" *ngIf="isLoggedIn">
+      <div class=" text-sm font-semibold leading-6 rounded-3xl bg-tertiary  border-2 border-white px-4 py-2 text-gray-900">A</div>
+      <button (click)="logout()" class="ml-2 text-sm font-semibold leading-6 text-gray-900">Log out<span aria-hidden="true">&rarr;</span></button>
     </div>
   </nav>
 

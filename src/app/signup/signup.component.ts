@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SignupService } from './../signup.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class SignupComponent {
   user = { name: '', email: '', password: '', confirmPassword: '' }; // Include 'name' field
   passwordsDoNotMatch = false;
 
-  constructor(private signupService: SignupService,private router: Router) {}
+  constructor(private signupService: SignupService,private router: Router, private toastr: ToastrService) {}
 
   onSignup() {
     // Check if passwords match
@@ -22,6 +23,9 @@ export class SignupComponent {
         (response) => {
           // Handle a successful sign-up response
           console.log('Sign-up successful:', response);
+
+          this.toastr.success('Sign-up successful, Please Login');
+
           // Redirect to another page or perform other actions
           this.router.navigate(['/home']);
 

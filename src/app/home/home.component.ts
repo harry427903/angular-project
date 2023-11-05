@@ -13,4 +13,11 @@ import { NgModule } from '@angular/core';
 
 export class HomeComponent {
 
+
+
+  isLoggedIn = false;
+  ngOnInit() {
+    this.isLoggedIn = localStorage.getItem("loggedin") === "true";
+
+  }
 }
